@@ -45,11 +45,10 @@
     display: flex; align-items: center; justify-content: space-between;
     height: 68px;
   }
- .nav-logo-img {
-  height: 38px;   /* same height as the old mark */
-  width: auto;
-  margin-right: 10px; /* spacing between logo and text */
-}
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
   .nav-logo-mark {
     width: 38px; height: 38px;
     background: linear-gradient(135deg, #1A6FD4 0%, #2B8EE8 100%);
@@ -493,10 +492,11 @@
 <body>
 
 <!-- ═══════════════════ NAV ═══════════════════ -->
-<a href="#" class="nav-logo">
-  <img src="logo.png" alt="Egypt Globatech Logo" class="nav-logo-img" />
-  <div class="nav-logo-text">
-    <span class="nav-logo-name">EGYPT GLOBATECH</span>
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">EGT</div>
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">EGYPT GLOBATECH</span>
     </div>
   </a>
   <div class="nav-links">
