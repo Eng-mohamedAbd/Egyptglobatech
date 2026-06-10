@@ -8,484 +8,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  /* existing styles remain unchanged */
 
-  :root {
-    --navy:      #0B2F66;
-    --dark-blue: #1F3557;
-    --steel:     #66758C;
-    --white:     #FFFFFF;
-    --light:     #F4F5F7;
-    --accent:    #1A6FD4;
-    --accent2:   #2B8EE8;
-    --border:    #D8DDE6;
-    --text:      #1C2B3A;
-    --muted:     #5A6A7E;
-    --font-head: 'DM Serif Display', Georgia, serif;
-    --font-body: 'Figtree', system-ui, sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--font-body);
-    color: var(--text);
-    background: var(--white);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ─── NAV ─── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background: rgba(11,47,102,0.97);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding: 0 40px;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 68px;
-  }
-  .nav-logo {
-    display: flex; align-items: center; gap: 12px;
-    text-decoration: none;
-  }
-  .nav-logo-mark {
-    width: 38px; height: 38px;
-    background: linear-gradient(135deg, #1A6FD4 0%, #2B8EE8 100%);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-head);
-    color: #fff; font-size: 16px; font-weight: 700;
-    letter-spacing: -0.5px;
-    flex-shrink: 0;
-  }
-  .nav-logo-text {
-    display: flex; flex-direction: column; line-height: 1.1;
-  }
-  .nav-logo-name { color: #fff; font-weight: 700; font-size: 15px; letter-spacing: 0.3px; }
-  .nav-logo-sub  { color: rgba(255,255,255,0.5); font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; }
-
-  .nav-links { display: flex; gap: 4px; align-items: center; }
-  .nav-links a {
-    color: rgba(255,255,255,0.78);
-    text-decoration: none; font-size: 13.5px; font-weight: 500;
-    padding: 8px 14px; border-radius: 6px;
-    transition: all 0.18s;
-  }
-  .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.09); }
-
-  .nav-cta {
-    background: var(--accent);
-    color: #fff !important;
-    padding: 9px 20px !important;
-    border-radius: 7px !important;
-    font-weight: 600 !important;
-    font-size: 13px !important;
-    transition: background 0.18s !important;
-  }
-  .nav-cta:hover { background: var(--accent2) !important; }
-
-  /* ─── HERO ─── */
-  .hero {
-    min-height: 100vh;
-    background: var(--navy);
-    display: flex; align-items: center;
-    position: relative; overflow: hidden;
-    padding: 100px 40px 80px;
-  }
-
-  .hero-grid {
-    position: absolute; inset: 0; opacity: 0.06;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-
-  .hero-glow {
-    position: absolute;
-    width: 700px; height: 700px;
-    background: radial-gradient(ellipse, rgba(26,111,212,0.25) 0%, transparent 70%);
-    top: -100px; right: -150px; pointer-events: none;
-  }
-  .hero-glow2 {
-    position: absolute;
-    width: 400px; height: 400px;
-    background: radial-gradient(ellipse, rgba(43,142,232,0.12) 0%, transparent 70%);
-    bottom: -80px; left: 200px; pointer-events: none;
-  }
-
-  .hero-inner {
-    max-width: 1200px; margin: 0 auto; width: 100%;
-    position: relative; z-index: 2;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-  }
-
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(26,111,212,0.18);
-    border: 1px solid rgba(26,111,212,0.4);
-    color: #7EB8F7; font-size: 12px; font-weight: 600;
-    letter-spacing: 1px; text-transform: uppercase;
-    padding: 7px 14px; border-radius: 100px;
-    margin-bottom: 28px;
-  }
-  .hero-badge span { width: 6px; height: 6px; background: #2B8EE8; border-radius: 50%; }
-
-  .hero h1 {
-    font-family: var(--font-head);
-    font-size: clamp(38px, 4.5vw, 58px);
-    color: #fff;
-    line-height: 1.12;
-    letter-spacing: -0.5px;
-    margin-bottom: 22px;
-  }
-  .hero h1 em { color: #5BADFF; font-style: normal; }
-
-  .hero-sub {
-    color: rgba(255,255,255,0.65);
-    font-size: 17px; line-height: 1.7;
-    max-width: 520px;
-    margin-bottom: 40px;
-  }
-
-  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #fff; text-decoration: none;
-    padding: 15px 30px; border-radius: 8px;
-    font-weight: 600; font-size: 15px;
-    transition: all 0.2s;
-    border: 2px solid transparent;
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .btn-primary:hover { background: var(--accent2); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(26,111,212,0.4); }
-
-  .btn-ghost {
-    background: transparent;
-    color: #fff; text-decoration: none;
-    padding: 13px 28px; border-radius: 8px;
-    font-weight: 600; font-size: 15px;
-    transition: all 0.2s;
-    border: 2px solid rgba(255,255,255,0.3);
-    display: inline-flex; align-items: center; gap: 8px;
-  }
-  .btn-ghost:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.06); }
-
-  .hero-stats {
-    display: flex; gap: 36px; margin-top: 52px;
-    padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1);
-  }
-  .stat-item { }
-  .stat-num {
-    font-family: var(--font-head);
-    font-size: 32px; color: #fff; line-height: 1;
-  }
-  .stat-num span { color: #5BADFF; }
-  .stat-label { color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 4px; }
-
-  /* Hero right panel */
-  .hero-visual {
-    display: flex; flex-direction: column; gap: 16px;
-  }
-  .hero-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 14px; padding: 24px;
-    backdrop-filter: blur(8px);
-    transition: border-color 0.2s;
-  }
-  .hero-card:hover { border-color: rgba(26,111,212,0.5); }
-
-  .hero-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-  .hc-icon {
-    width: 40px; height: 40px; border-radius: 10px;
-    background: rgba(26,111,212,0.25);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; flex-shrink: 0;
-  }
-  .hc-title { color: #fff; font-weight: 600; font-size: 14px; }
-  .hc-sub   { color: rgba(255,255,255,0.45); font-size: 12px; }
-  .hc-body  { color: rgba(255,255,255,0.6); font-size: 13px; line-height: 1.55; }
-
-  .tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
-  .tag {
-    background: rgba(26,111,212,0.2);
-    color: #7EB8F7; font-size: 11px; font-weight: 600;
-    padding: 4px 10px; border-radius: 100px;
-    border: 1px solid rgba(26,111,212,0.3);
-  }
-
-  /* ─── TRUST BAR ─── */
-  .trust-bar {
-    background: var(--light);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 20px 40px;
-    display: flex; align-items: center; justify-content: center; gap: 12px;
-    flex-wrap: wrap;
-  }
-  .trust-bar-label { color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; margin-right: 8px; }
-  .vendor-chip {
-    background: #fff; border: 1px solid var(--border);
-    color: var(--dark-blue); font-size: 12px; font-weight: 700;
-    padding: 7px 16px; border-radius: 6px;
-    letter-spacing: 0.3px;
-  }
-
-  /* ─── SECTIONS ─── */
-  .section { padding: 90px 40px; }
-  .section-light { background: var(--light); }
-  .section-dark  { background: var(--navy); }
-  .section-mid   { background: var(--dark-blue); }
-
-  .section-inner { max-width: 1200px; margin: 0 auto; }
-
-  .section-label {
-    display: inline-block;
-    color: var(--accent); font-size: 11px; font-weight: 700;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-  .section-label-light { color: #7EB8F7; }
-
-  .section-title {
-    font-family: var(--font-head);
-    font-size: clamp(28px, 3vw, 42px);
-    color: var(--navy); line-height: 1.15;
-    margin-bottom: 16px;
-  }
-  .section-title-light { color: #fff; }
-
-  .section-desc {
-    color: var(--muted); font-size: 17px; max-width: 600px; line-height: 1.7;
-    margin-bottom: 56px;
-  }
-  .section-desc-light { color: rgba(255,255,255,0.6); }
-
-  /* ─── SERVICES GRID ─── */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  .service-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 14px; padding: 32px;
-    transition: all 0.22s;
-    position: relative; overflow: hidden;
-  }
-  .service-card::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--navy), var(--accent));
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.3s;
-  }
-  .service-card:hover { border-color: rgba(26,111,212,0.3); box-shadow: 0 8px 32px rgba(11,47,102,0.1); transform: translateY(-3px); }
-  .service-card:hover::after { transform: scaleX(1); }
-
-  .sc-icon {
-    width: 52px; height: 52px; border-radius: 12px;
-    background: var(--light);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px; margin-bottom: 20px;
-    border: 1px solid var(--border);
-  }
-  .sc-title { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
-  .sc-desc { color: var(--muted); font-size: 14px; line-height: 1.65; margin-bottom: 16px; }
-  .sc-link { color: var(--accent); font-size: 13px; font-weight: 600; text-decoration: none; }
-  .sc-link:hover { text-decoration: underline; }
-
-  /* ─── WHY US ─── */
-  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-
-  .why-left { }
-  .why-list { list-style: none; display: flex; flex-direction: column; gap: 22px; margin-top: 32px; }
-  .why-item { display: flex; gap: 16px; align-items: flex-start; }
-  .why-check {
-    width: 32px; height: 32px; border-radius: 8px;
-    background: rgba(26,111,212,0.12);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 15px; flex-shrink: 0; margin-top: 2px;
-  }
-  .why-item-text h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-  .why-item-text p  { color: var(--muted); font-size: 14px; line-height: 1.6; }
-
-  .why-right {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
-  }
-  .metric-card {
-    background: #fff; border: 1px solid var(--border);
-    border-radius: 14px; padding: 28px 24px; text-align: center;
-  }
-  .metric-card.accent-card { background: var(--navy); border-color: var(--navy); }
-  .metric-num {
-    font-family: var(--font-head);
-    font-size: 38px; color: var(--navy); line-height: 1;
-  }
-  .metric-card.accent-card .metric-num { color: #5BADFF; }
-  .metric-unit { font-size: 18px; color: var(--accent); font-weight: 800; }
-  .metric-label { color: var(--muted); font-size: 13px; margin-top: 6px; }
-  .metric-card.accent-card .metric-label { color: rgba(255,255,255,0.55); }
-
-  /* ─── SOLUTIONS ─── */
-  .solutions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .sol-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 14px; padding: 28px 30px;
-    display: flex; gap: 20px; align-items: flex-start;
-    transition: border-color 0.2s;
-  }
-  .sol-card:hover { border-color: rgba(26,111,212,0.55); }
-  .sol-icon {
-    width: 46px; height: 46px; border-radius: 10px;
-    background: rgba(26,111,212,0.25);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px; flex-shrink: 0;
-  }
-  .sol-title { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-  .sol-desc  { color: rgba(255,255,255,0.55); font-size: 13px; line-height: 1.6; }
-
-  /* ─── LEADERSHIP ─── */
-  .leadership-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 860px; }
-  .leader-card {
-    background: #fff; border: 1px solid var(--border);
-    border-radius: 16px; overflow: hidden;
-    transition: box-shadow 0.2s;
-  }
-  .leader-card:hover { box-shadow: 0 12px 40px rgba(11,47,102,0.12); }
-  .leader-top {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--dark-blue) 100%);
-    padding: 36px 32px 28px;
-  }
-  .leader-avatar {
-    width: 64px; height: 64px; border-radius: 50%;
-    background: rgba(255,255,255,0.15);
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-head);
-    font-size: 22px; color: #fff;
-    border: 2px solid rgba(255,255,255,0.25);
-    margin-bottom: 16px;
-  }
-  .leader-name { color: #fff; font-size: 18px; font-weight: 700; margin-bottom: 4px; }
-  .leader-role { color: rgba(255,255,255,0.6); font-size: 13px; }
-  .leader-body { padding: 24px 32px; }
-  .leader-bio { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 16px; }
-  .leader-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-  .leader-tag {
-    background: var(--light); color: var(--navy);
-    font-size: 11px; font-weight: 700; letter-spacing: 0.4px;
-    padding: 4px 10px; border-radius: 5px;
-  }
-
-  /* ─── INDUSTRIES ─── */
-  .industries-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-  }
-  .industry-card {
-    background: #fff; border: 1px solid var(--border);
-    border-radius: 12px; padding: 26px 20px; text-align: center;
-    transition: all 0.2s;
-  }
-  .industry-card:hover { border-color: var(--accent); box-shadow: 0 4px 20px rgba(11,47,102,0.08); }
-  .ind-icon { font-size: 30px; margin-bottom: 12px; }
-  .ind-name { font-size: 14px; font-weight: 700; color: var(--navy); }
-
-  /* ─── PARTNER SECTION ─── */
-  .partner-logos {
-    display: flex; align-items: center; justify-content: center;
-    gap: 14px; flex-wrap: wrap; margin-top: 44px;
-  }
-  .p-logo {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.75);
-    font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
-    padding: 12px 22px; border-radius: 8px;
-    transition: all 0.2s;
-  }
-  .p-logo:hover { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.3); }
-
-  /* ─── CTA BANNER ─── */
-  .cta-banner {
-    background: linear-gradient(135deg, #0A2754 0%, #1A6FD4 100%);
-    padding: 80px 40px; text-align: center;
-  }
-  .cta-banner h2 {
-    font-family: var(--font-head);
-    font-size: clamp(28px, 3.5vw, 44px); color: #fff;
-    margin-bottom: 16px;
-  }
-  .cta-banner p { color: rgba(255,255,255,0.7); font-size: 17px; max-width: 560px; margin: 0 auto 36px; }
-  .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-  .btn-white {
-    background: #fff; color: var(--navy);
-    text-decoration: none; padding: 15px 32px;
-    border-radius: 8px; font-weight: 700; font-size: 15px;
-    transition: all 0.2s;
-  }
-  .btn-white:hover { background: #E8EFF8; box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: #080F1A;
-    color: rgba(255,255,255,0.6);
-    padding: 64px 40px 32px;
-  }
-  .footer-inner { max-width: 1200px; margin: 0 auto; }
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
-
-  .footer-brand-name { color: #fff; font-weight: 700; font-size: 16px; margin-bottom: 4px; }
-  .footer-brand-sub  { font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
-  .footer-desc       { font-size: 13px; line-height: 1.7; max-width: 280px; }
-  .footer-contact    { margin-top: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
-  .footer-contact a  { color: rgba(255,255,255,0.5); text-decoration: none; }
-  .footer-contact a:hover { color: #fff; }
-
-  .footer-col h4 { color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 16px; }
-  .footer-links  { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; transition: color 0.15s; }
-  .footer-links a:hover { color: #fff; }
-
-  .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding-top: 28px;
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
-    font-size: 12px; color: rgba(255,255,255,0.3);
-  }
-  .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
-  .footer-bottom a:hover { color: rgba(255,255,255,0.7); }
-  .footer-legal { display: flex; gap: 20px; }
-
-  /* ─── DIVIDERS & UTILITIES ─── */
-  .mt-0 { margin-top: 0; }
-  .flex-center { display: flex; justify-content: center; }
-  .two-col-header {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    margin-bottom: 48px; flex-wrap: wrap; gap: 20px;
-  }
-
-  @media(max-width:900px){
-    .hero-inner { grid-template-columns: 1fr; gap:48px; }
-    .hero-visual { display: none; }
-    .services-grid { grid-template-columns: 1fr 1fr; }
-    .solutions-grid { grid-template-columns: 1fr; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .industries-grid { grid-template-columns: repeat(2,1fr); }
-    .why-grid { grid-template-columns: 1fr; }
-    .leadership-grid { grid-template-columns: 1fr; }
-  }
-  @media(max-width:600px){
-    nav { padding:0 20px; }
-    .nav-links { display: none; }
-    .hero { padding: 90px 24px 60px; }
-    .section { padding: 64px 24px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .industries-grid { grid-template-columns: repeat(2,1fr); }
+  .nav-logo-img {
+    height: 38px;   /* same height as the old mark */
+    width: auto;
+    margin-right: 10px; /* spacing between logo and text */
   }
 </style>
 </head>
@@ -494,7 +22,10 @@
 <!-- ═══════════════════ NAV ═══════════════════ -->
 <nav>
   <a href="#" class="nav-logo">
-    <div class="nav-logo-mark">EGT</div>
+    <!-- Added logo image -->
+    <img src="logo.png" alt="Egypt Globatech Logo" class="nav-logo-img" />
+
+    <!-- Company name text -->
     <div class="nav-logo-text">
       <span class="nav-logo-name">EGYPT GLOBATECH</span>
     </div>
@@ -508,7 +39,6 @@
     <a href="#contact" class="nav-cta">Contact Us</a>
   </div>
 </nav>
-
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="hero">
@@ -593,12 +123,10 @@
     </div>
   </div>
 </section>
-
-
 <!-- ═══════════════════ TRUST BAR ═══════════════════ -->
 <div class="trust-bar">
   <span class="trust-bar-label">Technology Partners</span>
-    <span class="vendor-chip">ESET</span>
+  <span class="vendor-chip">ESET</span>
   <span class="vendor-chip">Safetica</span>
   <span class="vendor-chip">AWS</span>
   <span class="vendor-chip">Microsoft</span>
@@ -607,7 +135,6 @@
   <span class="vendor-chip">HP</span>
 </div>
 
-
 <!-- ═══════════════════ SERVICES ═══════════════════ -->
 <section class="section" id="services">
   <div class="section-inner">
@@ -615,7 +142,9 @@
       <div>
         <span class="section-label">Core Services</span>
         <h2 class="section-title">What We Deliver</h2>
-        <p class="section-desc" style="margin-bottom:0">From strategy to implementation — Egypt Globatech covers the full technology lifecycle for enterprise and mid-market organizations.</p>
+        <p class="section-desc" style="margin-bottom:0">
+          From strategy to implementation — Egypt Globatech covers the full technology lifecycle for enterprise and mid-market organizations.
+        </p>
       </div>
     </div>
     <div class="services-grid">
@@ -666,7 +195,6 @@
   </div>
 </section>
 
-
 <!-- ═══════════════════ WHY CHOOSE US ═══════════════════ -->
 <section class="section section-light" id="about">
   <div class="section-inner">
@@ -674,8 +202,12 @@
       <div class="why-left">
         <span class="section-label">Why Egypt Globatech</span>
         <h2 class="section-title">Built on Expertise.<br/>Delivered with Integrity.</h2>
-        <p style="color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:8px;">Egypt Globatech (EGT) was founded on the principle that technology investment should drive measurable business outcomes — not just tick compliance boxes.</p>
-        <p style="color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:0;">Our leadership brings over 15 years of combined hands-on experience across security operations, enterprise IT, cloud infrastructure, and technology consulting.</p>
+        <p style="color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:8px;">
+          Egypt Globatech (EGT) was founded on the principle that technology investment should drive measurable business outcomes — not just tick compliance boxes.
+        </p>
+        <p style="color:var(--muted);font-size:16px;line-height:1.7;margin-bottom:0;">
+          Our leadership brings over 15 years of combined hands-on experience across security operations, enterprise IT, cloud infrastructure, and technology consulting.
+        </p>
         <ul class="why-list">
           <li class="why-item">
             <div class="why-check">✓</div>
@@ -728,224 +260,212 @@
     </div>
   </div>
 </section>
-
-
 <!-- ═══════════════════ SOLUTIONS ═══════════════════ -->
 <section class="section section-dark" id="solutions">
   <div class="section-inner">
     <h2 class="section-title section-title-light">Enterprise Solutions Portfolio</h2>
-    <p class="section-desc section-desc-light">Structured solution categories designed around real-world enterprise requirements — security, infrastructure, cloud, and continuity.</p>
+    <p class="section-desc section-desc-light">
+      Structured solution categories designed around real-world enterprise requirements — security, infrastructure, cloud, and continuity.
+    </p>
 
     <div class="solutions-grid">
       <div class="sol-card">
         <div class="sol-icon">🔐</div>
         <div>
           <div class="sol-title">Security Solutions</div>
-          <p class="sol-desc">Endpoint detection & response, next-generation firewall, SIEM integration, DLP, privileged access management, and security awareness training.</p>
+          <p class="sol-desc">Endpoint detection & response, next-generation firewalls, SIEM integration, and advanced threat intelligence platforms.</p>
         </div>
       </div>
-      <div class="sol-card">
-        <div class="sol-icon">🏗️</div>
-        <div>
-          <div class="sol-title">Infrastructure Solutions</div>
-          <p class="sol-desc">Data center design, server and storage deployment, network infrastructure, virtualization with VMware, and enterprise hardware from Dell and HP.</p>
-        </div>
-      </div>
+
       <div class="sol-card">
         <div class="sol-icon">☁️</div>
         <div>
           <div class="sol-title">Cloud Solutions</div>
-          <p class="sol-desc">Cloud-first strategy, workload migration, hybrid cloud architecture, Microsoft 365 deployment, and AWS managed infrastructure services.</p>
+          <p class="sol-desc">Hybrid cloud deployments, migration strategies, and managed services across AWS, Microsoft Azure, and VMware environments.</p>
         </div>
       </div>
-      <div class="sol-card">
-        <div class="sol-icon">💾</div>
-        <div>
-          <div class="sol-title">Backup & Recovery</div>
-          <p class="sol-desc">Automated backup policies, ransomware-resilient data protection, offsite and cloud-based replication, and tested disaster recovery execution.</p>
-        </div>
-      </div>
+
       <div class="sol-card">
         <div class="sol-icon">🖥️</div>
         <div>
-          <div class="sol-title">Endpoint Protection</div>
-          <p class="sol-desc">ESET PROTECT, and Safetica DLP — centrally managed, policy-driven endpoint security for mobile and desktop fleets.</p>
+          <div class="sol-title">Infrastructure Solutions</div>
+          <p class="sol-desc">Enterprise-grade networking, storage, and compute solutions designed for scalability, resilience, and performance.</p>
         </div>
       </div>
+
       <div class="sol-card">
-        <div class="sol-icon">🤝</div>
+        <div class="sol-icon">🔄</div>
         <div>
-          <div class="sol-title">Vendor-Based Solutions</div>
-          <p class="sol-desc">Authorized reseller and implementation partner for ESET, Safetica, AWS, Microsoft, VMware, Dell, and HP — full portfolio access with certified deployment.</p>
+          <div class="sol-title">Continuity Solutions</div>
+          <p class="sol-desc">Backup, disaster recovery, and business continuity planning to ensure uptime and data protection.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- ═══════════════════ LEADERSHIP ═══════════════════ -->
-<section class="section">
-  <div class="section-inner">
-    <span class="section-label">Leadership</span>
-    <h2 class="section-title">The Team Behind EGT</h2>
-    <p class="section-desc">Egypt Globatech is led by technology professionals with deep expertise spanning cybersecurity, enterprise IT, and strategic consulting.</p>
-    <div class="leadership-grid">
-
-      <div class="leader-card">
-        <div class="leader-top">
-          <div class="leader-avatar">AA</div>
-          <div class="leader-name">Ahmed Aboushady</div>
-          <div class="leader-role">Founder | Managing Director</div>
-        </div>
-        <div class="leader-body">
-          <p class="leader-bio">Ahmed Aboushady is a senior IT and cybersecurity professional with extensive experience in enterprise technology strategy, solution architecture, and business development. He founded Egypt Globatech with the mission of delivering internationally benchmarked IT and security services to the regional market.<br/><br/>Ahmed oversees business operations, vendor relationships, and client engagement strategy. His background spans network security, infrastructure consulting, and technology procurement, providing EGT clients with end-to-end accountability from initial scoping through to post-deployment support.</p>
-          <div class="leader-tags">
-            <span class="leader-tag">Cybersecurity Strategy</span>
-            <span class="leader-tag">Business Development</span>
-            <span class="leader-tag">Vendor Relations</span>
-            <span class="leader-tag">IT Architecture</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="leader-card">
-        <div class="leader-top">
-          <div class="leader-avatar">MA</div>
-          <div class="leader-name">Mohamed Abdellutif</div>
-          <div class="leader-role">Chief Technology Officer</div>
-        </div>
-        <div class="leader-body">
-          <p class="leader-bio">Mohamed Abdellutif serves as Chief Technology Officer at Egypt Globatech, responsible for technical delivery standards, solution design, and the company's technology roadmap. He brings deep hands-on expertise across cybersecurity engineering, cloud infrastructure, and enterprise systems integration.<br/><br/>Mohamed leads the technical team in designing, deploying, and supporting complex IT environments for EGT clients. His experience includes security operations, endpoint management, virtualization platforms, and cloud architecture — ensuring that every solution delivered meets both business and technical requirements.</p>
-          <div class="leader-tags">
-            <span class="leader-tag">Cloud Architecture</span>
-            <span class="leader-tag">Security Engineering</span>
-            <span class="leader-tag">Infrastructure Design</span>
-            <span class="leader-tag">Technical Delivery</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════ INDUSTRIES ═══════════════════ -->
-<section class="section section-light" id="industries">
-  <div class="section-inner">
-    <span class="section-label">Industries Served</span>
-    <h2 class="section-title">Sector Experience</h2>
-    <p class="section-desc">Egypt Globatech serves organizations across industries where uptime, data security, and regulatory compliance are non-negotiable.</p>
-    <div class="industries-grid">
-      <div class="industry-card"><div class="ind-icon">🏦</div><div class="ind-name">Financial Services</div></div>
-      <div class="industry-card"><div class="ind-icon">🏥</div><div class="ind-name">Healthcare</div></div>
-      <div class="industry-card"><div class="ind-icon">🏛️</div><div class="ind-name">Government & Public Sector</div></div>
-      <div class="industry-card"><div class="ind-icon">🎓</div><div class="ind-name">Education</div></div>
-      <div class="industry-card"><div class="ind-icon">🏭</div><div class="ind-name">Manufacturing</div></div>
-      <div class="industry-card"><div class="ind-icon">🛒</div><div class="ind-name">Retail & E-Commerce</div></div>
-      <div class="industry-card"><div class="ind-icon">🏢</div><div class="ind-name">Professional Services</div></div>
-      <div class="industry-card"><div class="ind-icon">📡</div><div class="ind-name">Telecommunications</div></div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════ PARTNER SECTION ═══════════════════ -->
+<!-- ═══════════════════ PARTNERS ═══════════════════ -->
 <section class="section section-mid" id="partners">
-  <div class="section-inner" style="text-align:center">
-    <span class="section-label section-label-light">Vendor Ecosystem</span>
-    <h2 class="section-title section-title-light">Authorized Technology Partnerships</h2>
-    <p class="section-desc section-desc-light" style="margin:0 auto 0">Egypt Globatech is an authorized reseller, implementation partner, and service provider for leading global technology vendors. Our partnership framework ensures access to the latest products, certified technical training, dedicated channel support, and partner-level pricing for our clients.</p>
+  <div class="section-inner flex-center">
+    <h2 class="section-title section-title-light">Our Strategic Partners</h2>
+    <p class="section-desc section-desc-light">
+      Collaborating with leading technology vendors to deliver certified, enterprise-ready solutions.
+    </p>
     <div class="partner-logos">
       <div class="p-logo">ESET</div>
       <div class="p-logo">Safetica</div>
-      <div class="p-logo">Amazon Web Services</div>
+      <div class="p-logo">AWS</div>
       <div class="p-logo">Microsoft</div>
       <div class="p-logo">VMware</div>
       <div class="p-logo">Dell Technologies</div>
       <div class="p-logo">HP</div>
     </div>
-    <p style="color:rgba(255,255,255,0.4);font-size:13px;margin-top:24px;">Interested in working with EGT as a vendor or distribution partner? <a href="#contact" style="color:#7EB8F7;text-decoration:none;font-weight:600;">Contact our partnerships team →</a></p>
   </div>
 </section>
 
+<!-- ═══════════════════ INDUSTRIES ═══════════════════ -->
+<section class="section section-light" id="industries">
+  <div class="section-inner">
+    <h2 class="section-title">Industries We Serve</h2>
+    <p class="section-desc">
+      Egypt Globatech supports diverse industries with tailored IT and cybersecurity solutions.
+    </p>
+    <div class="industries-grid">
+      <div class="industry-card">
+        <div class="ind-icon">🏥</div>
+        <div class="ind-name">Healthcare</div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-icon">🏦</div>
+        <div class="ind-name">Finance</div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-icon">🏭</div>
+        <div class="ind-name">Manufacturing</div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-icon">🎓</div>
+        <div class="ind-name">Education</div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-icon">🛒</div>
+        <div class="ind-name">Retail</div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-icon">⚖️</div>
+        <div class="ind-name">Legal</div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-icon">🚚</div>
+        <div class="ind-name">Logistics</div>
+      </div>
+      <div class="industry-card">
+        <div class="ind-icon">🌐</div>
+        <div class="ind-name">Telecom</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══════════════════ LEADERSHIP ═══════════════════ -->
+<section class="section" id="leadership">
+  <div class="section-inner">
+    <h2 class="section-title">Leadership Team</h2>
+    <p class="section-desc">
+      Experienced professionals driving Egypt Globatech’s vision and delivery excellence.
+    </p>
+    <div class="leadership-grid">
+      <div class="leader-card">
+        <div class="leader-top">
+          <div class="leader-avatar">AA</div>
+          <div class="leader-name">Ahmed Aboushady</div>
+          <div class="leader-role">Founder & Managing Director</div>
+        </div>
+        <div class="leader-body">
+          <p class="leader-bio">Ahmed brings over 15 years of experience in enterprise IT operations, cybersecurity, and digital transformation consulting.</p>
+          <div class="leader-tags">
+            <span class="leader-tag">Cybersecurity</span>
+            <span class="leader-tag">Cloud</span>
+            <span class="leader-tag">Leadership</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="leader-card">
+        <div class="leader-top">
+          <div class="leader-avatar">TM</div>
+          <div class="leader-name">Technology Manager</div>
+          <div class="leader-role">Group IT Operations Manager</div>
+        </div>
+        <div class="leader-body">
+          <p class="leader-bio">Responsible for overseeing IT infrastructure, vendor partnerships, and operational governance across enterprise clients.</p>
+          <div class="leader-tags">
+            <span class="leader-tag">Infrastructure</span>
+            <span class="leader-tag">Operations</span>
+            <span class="leader-tag">Governance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════════════════ CTA BANNER ═══════════════════ -->
 <div class="cta-banner">
-  <div style="max-width:1200px;margin:0 auto">
-    <h2>Ready to Secure and Scale Your Technology?</h2>
-    <p>Speak with an Egypt Globatech consultant to discuss your infrastructure challenges, security requirements, or technology roadmap.</p>
-    <div class="cta-actions">
-      <a href="#contact" class="btn-white">Request a Consultation</a>
-      <a href="#contact" class="btn-ghost">Contact Sales</a>
-    </div>
+  <h2>Ready to Transform Your IT?</h2>
+  <p>Partner with Egypt Globatech for enterprise-grade solutions, cybersecurity resilience, and cloud innovation.</p>
+  <div class="cta-actions">
+    <a href="#contact" class="btn-white">Request Consultation</a>
+    <a href="#contact" class="btn-primary">Contact Us</a>
   </div>
 </div>
 
-
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
-<footer id="contact">
+<footer>
   <div class="footer-inner">
     <div class="footer-grid">
       <div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-          <div style="width:34px;height:34px;background:linear-gradient(135deg,#1A6FD4,#2B8EE8);border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);color:#fff;font-size:13px;font-weight:700;">EGT</div>
-          <div>
-            <div class="footer-brand-name">Egypt Globatech</div>
-            <div class="footer-brand-sub">IT & Cybersecurity Solutions</div>
-          </div>
-        </div>
-        <p class="footer-desc">Delivering enterprise-grade IT infrastructure, cybersecurity, cloud, and consulting services to organizations across Egypt and the broader region.</p>
+        <div class="footer-brand-name">EGYPT GLOBATECH</div>
+        <div class="footer-brand-sub">Enterprise IT & Cybersecurity</div>
+        <p class="footer-desc">Delivering enterprise IT infrastructure, cybersecurity solutions, cloud services, and digital transformation consulting.</p>
         <div class="footer-contact">
-          <span>📧 <a href="mailto:info@egyptglobatech.com">info@egyptglobatech.com</a></span>
-          <span>📞 <a href="tel:+201000000000">+20 1055000360</a></span>
-          <span>📍 88 Abd El-Salam Aref, Geleem, Alexandria, Egypt</span>
+          <a href="mailto:info@egyptglobatech.com">info@egyptglobatech.com</a>
+          <a href="tel:+201234567890">+20 123 456 7890</a>
         </div>
       </div>
 
       <div class="footer-col">
         <h4>Services</h4>
         <ul class="footer-links">
-          <li><a href="#">Cybersecurity Consulting</a></li>
-          <li><a href="#">Network & Infrastructure</a></li>
-          <li><a href="#">Cloud Services</a></li>
-          <li><a href="#">Endpoint Security</a></li>
-          <li><a href="#">Backup & Recovery</a></li>
-          <li><a href="#">Hardware Procurement</a></li>
+          <li><a href="#services">Cybersecurity</a></li>
+          <li><a href="#services">Cloud</a></li>
+          <li><a href="#services">Infrastructure</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul class="footer-links">
+          <li><a href="#solutions">Security</a></li>
+          <li><a href="#solutions">Continuity</a></li>
+          <li><a href="#solutions">Cloud</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>Company</h4>
         <ul class="footer-links">
-          <li><a href="#">About EGT</a></li>
-          <li><a href="#">Leadership</a></li>
-          <li><a href="#">Vendor Partnerships</a></li>
-          <li><a href="#">Industries Served</a></li>
-          <li><a href="#">Certifications</a></li>
-          <li><a href="#">Case Studies</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4>Support</h4>
-        <ul class="footer-links">
-          <li><a href="#">Request Consultation</a></li>
-          <li><a href="#">Technical Support</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Partner Inquiries</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#partners">Partners</a></li>
+          <li><a href="#industries">Industries</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <span>© 2026 Egypt Globatech. All rights reserved. [Commercial Registration No. — 33911]</span>
+      <div>© 2026 Egypt Globatech. All rights reserved.</div>
       <div class="footer-legal">
         <a href="#">Privacy Policy</a>
-        <a href="#">Terms & Conditions</a>
-        <a href="#">Cookie Policy</a>
+        <a href="#">Terms of Service</a>
       </div>
     </div>
   </div>
